@@ -26,16 +26,16 @@ UTILS = utils.f90
 UTILS_O = utils.o
 
 sum_SOURCES = sum.f90 $(UTILS)
-sum_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+sum_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 
 char_SOURCES = char.f90 $(UTILS)
-char_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+char_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 
 queue_SOURCES = queue.f90 $(UTILS)
-queue_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+queue_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 
 devices_SOURCES = devices.f90
-devices_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+devices_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 
 AM_FCFLAGS = @F90_MODULE_FLAG@$(top_builddir)/src
 

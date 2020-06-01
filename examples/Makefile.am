@@ -20,11 +20,11 @@
 noinst_PROGRAMS = sum devices
 
 sum_SOURCES = sum.f90
-sum_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+sum_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 dist_noinst_DATA = sum.cl
 
 devices_SOURCES = devices.f90
-devices_LDADD = $(top_builddir)/src/libfortrancl.la @CL_LIBS@
+devices_LDADD = $(top_builddir)/src/libfortrancl.a @CL_LIBS@
 
 AM_FCFLAGS = @F90_MODULE_FLAG@$(top_builddir)/src
 

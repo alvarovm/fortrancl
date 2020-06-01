@@ -28,9 +28,10 @@ AM_CFLAGS= @CL_CFLAGS@
 fortrancl_includedir = $(includedir)
 nodist_fortrancl_include_HEADERS = $(LIBFUNCMOD)
 
-lib_LTLIBRARIES = libfortrancl.la
+#lib_LTLIBRARIES = libfortrancl.la
+lib_LIBRARIES = libfortrancl.a
 
-libfortrancl_la_SOURCES =       \
+libfortrancl_a_SOURCES =       \
 	cl_types.f90           \
 	cl_buffer.f90          \
 	cl_command_queue.f90   \
@@ -43,7 +44,7 @@ libfortrancl_la_SOURCES =       \
 	cl_event.f90           \
 	cl.f90
 
-libfortrancl_la_SOURCES +=           \
+libfortrancl_a_SOURCES +=           \
 	utils.c                      \
 	cl_buffer_low.c              \
 	cl_command_queue_low.c       \

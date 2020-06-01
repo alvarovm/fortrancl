@@ -36,7 +36,8 @@ AC_PROG_YACC
 AC_PROG_SED
 
 AC_PROG_CC
-LT_INIT([disable-shared])
+#LT_INIT([disable-shared])
+AC_PROG_RANLIB
 
 # Set proper version
 # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
