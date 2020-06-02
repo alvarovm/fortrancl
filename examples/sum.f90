@@ -38,14 +38,35 @@ program sum
   real, allocatable  :: vec1(:), vec2(:)
   type(cl_mem)       :: cl_vec1, cl_vec2
 
+  integer :: num_platforms, num_devices,  iplat, idev
+  type(cl_platform_id), allocatable :: platforms(:)
+
+
   !=====================
   ! INITIALIZATION
   !=====================
+  ! get the number of platforms
+  call clGetPlatformIDs(num_platforms, ierr)
+
+  allocate(platforms(1:num_platforms))
 
   ! get the platform ID
-  call clGetPlatformIDs(platform, num, ierr)
+  call clGetPlatformIDs(platforms, num, ierr)
   if(ierr /= CL_SUCCESS) stop "Cannot get CL platform."
 
+  iplat = 3
+  platform = platforms(iplat)
+
+  write(*, '(a,i1)') 'Platform number             : ', iplat
+
+    call clGetPlatformInfo(platforms(iplat), CL_PLATFORM_VENDOR, info, ierr)
+    write(*, '(2a)')   'Vendor                      : ', trim(info)
+
+    call clGetPlatformInfo(platforms(iplat), CL_PLATFORM_NAME, info, ierr)
+    write(*, '(2a)')   'Name                        : ', trim(info)
+
+    call clGetPlatformInfo(platforms(iplat), CL_PLATFORM_VERSION, info, ierr)
+    write(*, '(2a)')   'Version                     : ', trim(info)
   ! get the device ID
   call clGetDeviceIDs(platform, CL_DEVICE_TYPE_ALL, device, num, ierr)
   if(ierr /= CL_SUCCESS) stop "Cannot get CL device."
@@ -137,5 +158,7 @@ program sum
   call clReleaseKernel(kernel, ierr)
   call clReleaseCommandQueue(command_queue, ierr)
   call clReleaseContext(context, ierr)
+
+  deallocate(platforms)
 
 end program sum
